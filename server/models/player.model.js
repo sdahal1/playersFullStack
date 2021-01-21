@@ -15,8 +15,10 @@ const PlayerSchema = new mongoose.Schema({
 
     },
     ppG: {
-        type: Decimal128,
-        required:[true,"Points per game is needed to see if this player is nice or nah"]
+        type: Number,
+        required:[true,"Points per game is needed to see if this player is nice or nah"],
+        min: [1,"Player must get at least one bucket to qualify"],
+        max: [50, "This players too nice for this demo"]
     }
 })
 

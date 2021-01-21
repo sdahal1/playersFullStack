@@ -27,15 +27,23 @@ module.exports.findOnePlayer = (req,res) =>{
 }
 
 module.exports.updatePlayer = (req,res) =>{
-   
+    // var id = req.params.id;
+    // var client = req.body;
+    // Client.update({_id: id}, req.body, { runValidators: true }, function(err) {
+    //   ....
+    // });
+
+
+
     Player.findOneAndUpdate({_id: req.params.playerId}, req.body,
         {
           new: true,
           runValidators: true,
           useFindAndModify:false
-        })
+        }
+        )
         .then(updatedPlayer => res.json({results:updatedPlayer}) )
-        .catch(err=> res.json({errors: err}))
+        .catch(err=> res.json(err))
 }
 
 

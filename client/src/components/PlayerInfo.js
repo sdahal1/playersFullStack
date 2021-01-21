@@ -23,7 +23,7 @@ const PlayerInfo = (props) => {
             <h3>Here is info about this player:</h3>
             <p>Player Id:{ props.playerid}</p>
             <p>Player Name: {playerdetails.firstName} {playerdetails.lastName}</p>
-            <p>Points per game: {playerdetails.ppG.$numberDecimal}</p>
+            <p>Points per game: {playerdetails.ppG}</p>
         </div>
     );
 };

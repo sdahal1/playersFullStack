@@ -9,6 +9,8 @@ const NewPlayer = () => {
         ppG:0
     })
 
+    const [errors, seterrors] = useState({})
+
     const changeHandler = (e)=>{
         console.log("ohhhhh you typing on an input huh....", e.target.name)
        
@@ -30,14 +32,14 @@ const NewPlayer = () => {
                 }
                 else{
                     console.log("you aint goinnn noo where till you fill this out properlayyy")
+                    seterrors(res.data.errors)
                 }
                 
             })
             .catch(err=> console.log("errors that came up from posting", err))
 
-
-
     }
+
 
 
     return (
@@ -46,14 +48,20 @@ const NewPlayer = () => {
                 <div>
                     <label htmlFor="">First Name</label>
                     <input type="text" name="firstName" onChange={changeHandler} id=""/>
+                    <span className= "text-danger">{errors.firstName? errors.firstName.message: "" }</span>
                 </div>
                 <div>
                     <label htmlFor="">Last Name</label>
                     <input type="text" name="lastName" onChange={changeHandler} id=""/>
+                    <span className= "text-danger">{errors.lastName? errors.lastName.message: "" }</span>
+
+
                 </div>
                 <div>
                     <label htmlFor="">Points per game</label>
                     <input type="number" name="ppG" onChange={changeHandler} id=""/>
+                    <span className= "text-danger">{errors.ppG? errors.ppG.message: "" }</span>
+
                 </div>
                 <input type="submit" value="Add this player!"/>
             </form>

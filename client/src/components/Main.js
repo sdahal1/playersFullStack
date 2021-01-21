@@ -8,11 +8,26 @@ const Main = () => {
     const [allplayers, setallplayers] = useState([])
 
     const [deleteClicked, setDeleteClicked] = useState(false)
+    
 
     useEffect(()=>{
         Axios.get("http://localhost:8000/api/players")
            .then(response => {
                console.log("*************", response)
+            //    var items = [
+            //     { name: 'Edward', value: 21 },
+            //     { name: 'Sharpe', value: 37 },
+            //     { name: 'And', value: 45 },
+            //     { name: 'The', value: -12 },
+            //     { name: 'Magnetic', value: 13 },
+            //     { name: 'Zeros', value: 37 }
+            //   ];
+              
+              // sort by value
+              response.data.results.sort(function (a, b) {
+                return a.ppG - b.ppG;
+              });
+              
                setallplayers(response.data.results)
            })
            .catch(err=> console.log(err)) 
@@ -46,7 +61,7 @@ const Main = () => {
 
                                         <td>{player.firstName}</td>
                                         <td>{player.lastName}</td>
-                                        <td>{player.ppG.$numberDecimal}</td>
+                                        <td>{player.ppG}</td>
                                         <td>
                                             <Link className = "btn btn-info m-1" to = {`/players/${player._id}`}>View Player</Link>
                                             <Link className = "btn btn-info m-1" to = {`/players/edit/${player._id}`}>Edit Player</Link>
