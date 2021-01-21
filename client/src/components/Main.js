@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import Axios from 'axios';
 import {Link} from "@reach/router";
 
+console.log("TESTIN TESTING TESTING ")
+
 const Main = () => {
     //if i want it to run some function upon rendering of this component, i want to use useEffect
     const [allplayers, setallplayers] = useState([])
